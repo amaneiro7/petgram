@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { Article, Button, Img, ImgWrapper } from './styles'
 import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
 
