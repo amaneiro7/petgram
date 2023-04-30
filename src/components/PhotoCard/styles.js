@@ -4,6 +4,7 @@ import { loadingSkeleton } from '@/styles/loadingSkeleton'
 
 export const Article = styled.article`
     min-height: 200px;
+    padding: 50px 0;
 `
 
 export const ImgWrapper = styled.div`
