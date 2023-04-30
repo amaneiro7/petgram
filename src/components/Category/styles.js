@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { loadingSkeleton } from '@/styles/loadingSkeleton'
 
 export const Anchor = styled.a`
     display: flex;
@@ -16,4 +17,7 @@ export const Image = styled.img`
     object-fit: cover;
     height: 75px;
     width: 75px;
+    background: linear-gradient(-90deg, #c1c1c1 0%, #f8f8f8 50%, #c1c1c1 100%);
+    background-size: 400% 400%;
+    ${loadingSkeleton()}    
 `

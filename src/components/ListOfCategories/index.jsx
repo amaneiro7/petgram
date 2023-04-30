@@ -1,17 +1,26 @@
-import React from 'react'
-import { Category } from '@/components/Category'
-import { List, Item } from './styles'
-import { categories } from '../../../api/db.json'
+import React, { useCallback, useEffect, useState } from 'react'
+import { useOnScroll } from '@/Hooks/useOnScroll'
+import { RenderList } from './RenderList'
 
 export function ListOfCategories () {
+  // const { showFixed } = useCallback(() => useOnScroll(), [showFixed])
+  // const { categories, loading } = useCategoriesData()
+  const [showFixed, setShowFixed] = useState(false)
+  useEffect(() => {
+    const onScroll = e => {
+      const newShowFixed = window.scrollY > 200
+      showFixed !== newShowFixed && setShowFixed(newShowFixed)
+    }
+
+    document.addEventListener('scroll', onScroll)
+
+    return () => document.removeEventListener('scroll', onScroll)
+  }, [showFixed])
+
   return (
-    <List>
-      {
-        categories.map(category =>
-          <Item key={category.id}>
-            <Category {...category} />
-          </Item>)
-        }
-    </List>
+    <>
+      <RenderList />
+      {showFixed && <RenderList fixed />}
+    </>
   )
 }
