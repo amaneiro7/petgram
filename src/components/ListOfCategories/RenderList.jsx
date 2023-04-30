@@ -11,7 +11,7 @@ export const RenderList = ({ fixed }) => {
         ? [1, 2, 3, 4].map(category => <Item key={category}><Category /></Item>)
         : categories.map(category =>
           <Item key={category.id}>
-            <Category {...category} />
+            <Category {...category} path={`/pet/${category.id}`} />
           </Item>)}
     </List>
   )

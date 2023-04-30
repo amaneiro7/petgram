@@ -1,9 +1,10 @@
-import { ListOfPhotoCard } from '@/components/ListOfPhotoCard'
-import { ListOfCategories } from '@/components/ListOfCategories'
-import { Logo } from '@/components/Logo'
 import ErrorBoundary from './ErrorBoundary'
+import { Logo } from '@/components/Logo'
 import { GlobalStyle } from '@/styles/GlobalStyles'
 import { PhotoCardWithQuery } from '@/container/PhotoCardWithQuery'
+// import { NavRoutes } from '@/Routes'
+import { Route, Routes, BrowserRouter } from 'react-router-dom'
+import Home from '../pages/Home'
 
 function App () {
   const urlParams = new window.URLSearchParams(window.location.search)
@@ -14,12 +15,17 @@ function App () {
       <div>
         <Logo />
         <GlobalStyle />
-        {detailId
+        {
+        detailId
           ? <PhotoCardWithQuery id={detailId} />
-          : <>
-            <ListOfCategories />
-            <ListOfPhotoCard />
-          </>}
+          : (<BrowserRouter>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/pet/:id' element={<Home />} />
+            </Routes>
+          </BrowserRouter>
+            )
+}
       </div>
     </ErrorBoundary>
   )
