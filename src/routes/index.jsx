@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { Home } from '@/pages/Home'
 import { Detail } from '@/pages/Detail'
+import { AppContext } from '@/context'
 import { authenticatedRoute, protectedRoute } from './PrivateRoute'
-const isAuth = false
 
 export function PublicRoute () {
+  const { isAuth } = useContext(AppContext)
   return (
     <>
       <Routes>
