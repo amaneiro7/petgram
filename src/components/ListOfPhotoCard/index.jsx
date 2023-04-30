@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { PhotoCard } from '@/components/PhotoCard'
 
 export function ListOfPhotoCard () {
+  const arrayList = Array(10).fill(null)
+
   // const [photoCard, setPhotoCard] = useState([])
 
   // useEffect(() => {
@@ -16,7 +18,7 @@ export function ListOfPhotoCard () {
 
   return (
     <ul>
-      {[1, 2, 3, 4, 5].map(id => <PhotoCard key={id} />)}
+      {arrayList.map((id, index) => <PhotoCard key={index} id={index} />)}
     </ul>
   )
 }
