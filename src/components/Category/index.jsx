@@ -1,11 +1,11 @@
 import React from 'react'
-import { Anchor, Image } from './styles'
+import { Link, Image } from './styles'
 
 export function Category ({ cover, path, emoji = '?', loading }) {
   return (
-    <Anchor href={path}>
+    <Link to={path}>
       <Image src={cover} alt='' loading={loading} />
       {emoji}
-    </Anchor>
+    </Link>
   )
 }

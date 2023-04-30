@@ -4,6 +4,7 @@ import { useLocalStorage } from '@/Hooks/useLocalStorage'
 import { usenearScreen } from '@/Hooks/useNearScreen'
 import FavButton from '@/components/FavButton'
 import { useMutationToggleLike } from '../../container/ToggleLikeMutation'
+import { Link } from 'react-router-dom'
 
 export function PhotoCard ({ id, likes = 0, src }) {
   const key = `like-${id}`
@@ -18,7 +19,6 @@ export function PhotoCard ({ id, likes = 0, src }) {
       }
     })
     setLiked(!liked)
-    console.log('{mutation, mutationError, mutationLoading}', { mutation, mutationError, mutationLoading })
   }
 
   return (
@@ -26,11 +26,11 @@ export function PhotoCard ({ id, likes = 0, src }) {
       {
         show &&
           <>
-            <a href={`/?detail=${id}`}>
+            <Link to={`/detail/${id}`}>
               <ImgWrapper>
                 <Img src={src} alt='' />
               </ImgWrapper>
-            </a>
+            </Link>
             <FavButton liked={liked} likes={likes} onClick={handleFavClick} />
           </>
       }

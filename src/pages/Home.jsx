@@ -4,11 +4,11 @@ import { ListOfCategories } from '@/components/ListOfCategories'
 import { useParams } from 'react-router-dom'
 
 export default function Home () {
-  const { id } = useParams()
+  const params = useParams()
   return (
     <>
       <ListOfCategories />
-      <ListOfPhotoCard categoryId={id} />
+      <ListOfPhotoCard categoryId={params.id} />
     </>
   )
 }
