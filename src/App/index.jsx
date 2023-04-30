@@ -1,15 +1,17 @@
-import { ListOfCategories } from '@/components/ListOfCategories'
+import { ListOfPhotoCard } from '../components/ListOfPhotoCard'
+import { ListOfCategories } from '../components/ListOfCategories'
+import { Logo } from '../components/Logo'
+import ErrorBoundary from './ErrorBoundary'
 import { GlobalStyle } from '@/styles/GlobalStyles'
-import { ListOfPhotoCard } from '@/components/ListOfPhotoCard'
-import { Logo } from '@/components/Logo'
+
 function App () {
   return (
-    <>
+    <ErrorBoundary>
       <Logo />
       <GlobalStyle />
       <ListOfCategories />
       <ListOfPhotoCard />
-    </>
+    </ErrorBoundary>
   )
 }
 

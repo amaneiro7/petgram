@@ -1,10 +1,7 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import { useOnScroll } from '@/Hooks/useOnScroll'
+import React, { useEffect, useState } from 'react'
 import { RenderList } from './RenderList'
 
 export function ListOfCategories () {
-  // const { showFixed } = useCallback(() => useOnScroll(), [showFixed])
-  // const { categories, loading } = useCategoriesData()
   const [showFixed, setShowFixed] = useState(false)
   useEffect(() => {
     const onScroll = e => {
