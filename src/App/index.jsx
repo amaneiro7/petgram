@@ -1,19 +1,14 @@
 import ErrorBoundary from './ErrorBoundary'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Home from '@/pages/Home'
-import { Detail } from '@/pages/Detail'
+import { BrowserRouter } from 'react-router-dom'
 import { Layout } from '@/components/Layout'
+import { PublicRoute } from '@/routes'
 
 function App () {
   return (
     <ErrorBoundary>
       <BrowserRouter>
         <Layout>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/pet/:id' element={<Home />} />
-            <Route path='/detail/:detailId' element={<Detail />} />
-          </Routes>
+          <PublicRoute />
         </Layout>
       </BrowserRouter>
     </ErrorBoundary>
