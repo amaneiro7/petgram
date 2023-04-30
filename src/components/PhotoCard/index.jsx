@@ -18,7 +18,7 @@ export function PhotoCard ({ id, likes = 0, src }) {
       {
         show &&
           <>
-            <a href={`/detail/${id}`}>
+            <a href={`/?detail=${id}`}>
               <ImgWrapper>
                 <Img src={src} alt='' />
               </ImgWrapper>

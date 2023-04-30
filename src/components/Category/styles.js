@@ -16,8 +16,6 @@ export const Image = styled.img`
     overflow: hidden;
     object-fit: cover;
     height: 75px;
-    width: 75px;
-    background: linear-gradient(-90deg, #c1c1c1 0%, #f8f8f8 50%, #c1c1c1 100%);
-    background-size: 400% 400%;
+    width: 75px;   
     ${loadingSkeleton()}    
 `
