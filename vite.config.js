@@ -15,6 +15,25 @@ export default defineConfig({
   },
   plugins: [
     VitePWA({
+      registerType: 'autoUpdate',
+      workbox: {
+        runtimeCaching: [
+          {
+            urlPattern: /https:\/\/(res.cloudinary.com|images.unsplash.com)/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'images'
+            }
+          },
+          {
+            urlPattern: /https:\/\/(petgram-server-edsf8xpy2\.now\.sh|petgram-server-amaneiro7\.vercel\.app\/)/,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'api'
+            }
+          }
+        ]
+      },
       includeAssets: ['favicon-16x16.png', 'favicon-32x32.png', 'android-chrome-192x192.png', 'android-chrome-256x256.png', 'android-chrome-512x512.png', 'apple-touch-icon.png'],
       manifest: {
         name: 'Petgram - Tu app de fotos de mascotas',
