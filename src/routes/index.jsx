@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { Home } from '@/pages/Home'
 import { Detail } from '@/pages/Detail'
+import { NotFound } from '@/pages/NotFound'
 import { AppContext } from '@/context'
 import { authenticatedRoute, protectedRoute } from './PrivateRoute'
 
@@ -16,7 +17,7 @@ export function PublicRoute () {
         {isAuth
           ? authenticatedRoute()
           : protectedRoute()}
-        <Route path='*' element={<p>Not Found</p>} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </>
   )
