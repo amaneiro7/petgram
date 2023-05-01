@@ -24,8 +24,6 @@ export const RenderFavs = () => {
   if (error) return <p>Error...</p>
 
   const { favs } = data
-  console.log('favs', favs)
-  console.log('data', data)
   if (!favs.length) return <p>No ha seleccionado ninguna animalito como favorito</p>
   if (favs.length) return <ListOfFavs favs={favs} />
 }

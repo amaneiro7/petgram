@@ -1,15 +1,19 @@
-import React from 'react'
-import { Article, Img, ImgWrapper } from './styles'
-// import { useLocalStorage } from '@/Hooks/useLocalStorage'
-import { usenearScreen } from '@/Hooks/useNearScreen'
-import FavButton from '@/components/FavButton'
-import { useMutationToggleLike } from '../../container/ToggleLikeMutation'
+import React, { lazy } from 'react'
 import { Link } from 'react-router-dom'
+// import { useLocalStorage } from '@/Hooks/useLocalStorage'
+import { useNearScreen } from '@/Hooks/useNearScreen'
+import { useMutationToggleLike } from '@/container/ToggleLikeMutation'
+import PropTypes from 'prop-types'
 
-export function PhotoCard ({ id, liked, likes = 0, src }) {
+const FavButton = lazy(() => import('@/components/FavButton').then(module => ({ default: module.FavButton })))
+const Article = lazy(() => import('./styles').then(module => ({ default: module.Article })))
+const Img = lazy(() => import('./styles').then(module => ({ default: module.Img })))
+const ImgWrapper = lazy(() => import('./styles').then(module => ({ default: module.ImgWrapper })))
+
+export const PhotoCard = ({ id, liked, likes = 0, src }) => {
   // const key = `like-${id}`
   // const [liked, setLiked] = useLocalStorage(key, false)
-  const [show, element] = usenearScreen()
+  const [show, element] = useNearScreen()
   const { mutation, mutationError, mutationLoading } = useMutationToggleLike()
 
   const handleFavClick = () => {
@@ -35,4 +39,15 @@ export function PhotoCard ({ id, liked, likes = 0, src }) {
       }
     </Article>
   )
+}
+
+PhotoCard.propTypes = {
+  id: PropTypes.string.isRequired,
+  liked: PropTypes.bool.isRequired,
+  src: PropTypes.string.isRequired,
+  likes: function (props, propName, componentName) {
+    const propValue = props[propName]
+    if (propValue === undefined) return new Error(`${propName} value must be defined`)
+    if (propValue < 0) return new Error(`${propName} value must be greater than 0`)
+  }
 }
