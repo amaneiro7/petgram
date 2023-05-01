@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { RenderList } from './RenderList'
 
-export function ListOfCategories () {
+const ListOfCategoriesComponents = () => {
   const [showFixed, setShowFixed] = useState(false)
+
   useEffect(() => {
     const onScroll = e => {
       const newShowFixed = window.scrollY > 200
@@ -21,3 +22,5 @@ export function ListOfCategories () {
     </>
   )
 }
+
+export const ListOfCategories = memo(ListOfCategoriesComponents)

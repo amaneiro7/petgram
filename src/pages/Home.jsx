@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { ListOfPhotoCard } from '@/components/ListOfPhotoCard'
 import { ListOfCategories } from '@/components/ListOfCategories'
 import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
-export function Home () {
+const HomePage = () => {
   const params = useParams()
   return (
     <>
@@ -17,3 +17,7 @@ export function Home () {
     </>
   )
 }
+
+export const Home = memo(HomePage, (prevProps, props) => {
+  return prevProps.categoryId === props.categoryId
+})
