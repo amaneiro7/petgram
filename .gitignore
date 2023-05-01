@@ -8,6 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+curso-platzi-react-avanzado
 dist
 dist-ssr
 *.local
