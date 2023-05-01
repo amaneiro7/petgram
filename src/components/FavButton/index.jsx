@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const MdFavorite = lazy(() => import('react-icons/md').then(module => ({ default: module.MdFavorite })))
 const MdFavoriteBorder = lazy(() => import('react-icons/md').then(module => ({ default: module.MdFavoriteBorder })))
-const Button = lazy(() => import('./styles').then(module => ({ default: module.Button })))
+const Button = lazy(() => import('./style').then(module => ({ default: module.Button })))
 
 export const FavButton = ({ likes, liked, onClick }) => {
   const Icon = liked ? MdFavorite : MdFavoriteBorder

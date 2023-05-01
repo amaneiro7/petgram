@@ -1,5 +1,7 @@
 import { gql, useQuery } from '@apollo/client'
-import { ListOfFavs } from '@/components/ListOfFavs'
+import { Suspense, lazy } from 'react'
+
+const ListOfFavs = lazy(() => import('@/components/ListOfFavs').then(module => ({ default: module.ListOfFavs })))
 
 const GET_FAVORITES = gql`
 query getFavs {
@@ -25,5 +27,5 @@ export const RenderFavs = () => {
 
   const { favs } = data
   if (!favs.length) return <p>No ha seleccionado ninguna animalito como favorito</p>
-  if (favs.length) return <ListOfFavs favs={favs} />
+  if (favs.length) return <Suspense><ListOfFavs favs={favs} /></Suspense>
 }

@@ -1,9 +1,13 @@
-import React from 'react'
-import { Navbar } from '@/components/Navbar'
-import { Logo } from '@/components/Logo'
-import { GlobalStyle } from '@/styles/GlobalStyles'
+import React, { lazy } from 'react'
 import { Helmet } from 'react-helmet'
-import { Main, Subtitle, Title } from './style'
+import PropTypes from 'prop-types'
+
+const Navbar = lazy(() => import('@/components/Navbar').then(module => ({ default: module.Navbar })))
+const Logo = lazy(() => import('@/components/Logo').then(module => ({ default: module.Logo })))
+const GlobalStyle = lazy(() => import('@/styles/GlobalStyles').then(module => ({ default: module.GlobalStyle })))
+const Main = lazy(() => import('./style').then(module => ({ default: module.Main })))
+const Subtitle = lazy(() => import('./style').then(module => ({ default: module.Subtitle })))
+const Title = lazy(() => import('./style').then(module => ({ default: module.Title })))
 
 export const Layout = ({ children, title, subtitle }) => {
   return (
@@ -22,4 +26,10 @@ export const Layout = ({ children, title, subtitle }) => {
       <Navbar />
     </Main>
   )
+}
+
+Layout.propTypes = {
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  children: PropTypes.node
 }

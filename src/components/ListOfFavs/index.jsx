@@ -1,6 +1,9 @@
-import React from 'react'
-import { Grid, Image, Link } from './style'
+import React, { lazy } from 'react'
 import PropTypes from 'prop-types'
+
+const Grid = lazy(() => import('./style').then(module => ({ default: module.Grid })))
+const Image = lazy(() => import('./style').then(module => ({ default: module.Image })))
+const Link = lazy(() => import('./style').then(module => ({ default: module.Link })))
 
 export const ListOfFavs = ({ favs = [] }) => {
   return (

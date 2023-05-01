@@ -1,8 +1,9 @@
-import React from 'react'
-import { PhotoCard } from '@/components/PhotoCard'
-import { SkeletonPhoto } from '@/styles/loadingSkeleton'
+import React, { Suspense, lazy } from 'react'
 
-export default function RenderPhotoCardWithQuery ({ loading, error, data }) {
+const PhotoCard = lazy(() => import('@/components/PhotoCard').then(module => ({ default: module.PhotoCard })))
+const SkeletonPhoto = lazy(() => import('@/styles/loadingSkeleton').then(module => ({ default: module.SkeletonPhoto })))
+
+export const RenderPhotoCardWithQuery = ({ loading, error, data }) => {
   if (error) {
     return <h2>Internal Server Error</h2>
   }
@@ -10,5 +11,5 @@ export default function RenderPhotoCardWithQuery ({ loading, error, data }) {
     return <SkeletonPhoto />
   }
 
-  return <PhotoCard {...data.photo} />
+  return <Suspense><PhotoCard {...data.photo} /></Suspense>
 }

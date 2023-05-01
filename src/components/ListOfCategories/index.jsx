@@ -1,5 +1,6 @@
-import React, { memo, useEffect, useState } from 'react'
-import { RenderList } from './RenderList'
+import React, { Suspense, lazy, memo, useEffect, useState } from 'react'
+
+const RenderList = lazy(() => import('./RenderList').then(module => ({ default: module.RenderList })))
 
 const ListOfCategoriesComponents = () => {
   const [showFixed, setShowFixed] = useState(false)
@@ -16,10 +17,10 @@ const ListOfCategoriesComponents = () => {
   }, [showFixed])
 
   return (
-    <>
+    <Suspense>
       <RenderList />
       {showFixed && <RenderList fixed />}
-    </>
+    </Suspense>
   )
 }
 

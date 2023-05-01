@@ -1,6 +1,7 @@
-import * as React from 'react'
-import { Svg } from './style'
+import { lazy } from 'react'
 import { Link } from 'react-router-dom'
+
+const Svg = lazy(() => import('./style').then(module => ({ default: module.Svg })))
 
 export const Logo = (props) => (
   <Link to='/'>
