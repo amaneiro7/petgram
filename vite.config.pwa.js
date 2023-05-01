@@ -5,6 +5,9 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  build: {
+    manifest: true
+  },
   resolve: {
     alias: [{
       find: '@', replacement: path.resolve(__dirname, 'src')
