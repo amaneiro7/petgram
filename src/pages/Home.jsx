@@ -1,8 +1,9 @@
-import React, { memo } from 'react'
-import { ListOfPhotoCard } from '@/components/ListOfPhotoCard'
-import { ListOfCategories } from '@/components/ListOfCategories'
+import React, { Suspense, lazy, memo } from 'react'
 import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
+
+const ListOfPhotoCard = lazy(() => import('@/components/ListOfPhotoCard').then(module => ({ default: module.ListOfPhotoCard })))
+const ListOfCategories = lazy(() => import('@/components/ListOfCategories').then(module => ({ default: module.ListOfCategories })))
 
 const HomePage = () => {
   const params = useParams()
@@ -12,8 +13,12 @@ const HomePage = () => {
         <title>Petgram - Tu app de fotos de mascotas</title>
         <meta name='description' content='Con Petgram puedes encontrar fotos de animales domésticos muy bonitos' />
       </Helmet>
-      <ListOfCategories />
-      <ListOfPhotoCard categoryId={params.id} />
+      <Suspense>
+        <ListOfCategories />
+      </Suspense>
+      <Suspense>
+        <ListOfPhotoCard categoryId={params.id} />
+      </Suspense>
     </>
   )
 }

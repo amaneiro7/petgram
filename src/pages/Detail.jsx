@@ -1,10 +1,13 @@
-import React from 'react'
-import { PhotoCardWithQuery } from '@/container/PhotoCardWithQuery'
+import React, { Suspense, lazy } from 'react'
 import { useParams } from 'react-router-dom'
 
-export function Detail () {
+const PhotoCardWithQuery = lazy(() => import('@/container/PhotoCardWithQuery').then(module => ({ default: module.PhotoCardWithQuery })))
+
+export const Detail = () => {
   const { detailId } = useParams()
   return (
-    <PhotoCardWithQuery id={detailId} />
+    <Suspense>
+      <PhotoCardWithQuery id={detailId} />
+    </Suspense>
   )
 }

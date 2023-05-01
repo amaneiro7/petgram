@@ -1,8 +1,6 @@
 import { Suspense, lazy } from 'react'
-import ErrorBoundary from './ErrorBoundary'
 import { BrowserRouter } from 'react-router-dom'
-// import { Layout } from '@/components/Layout'
-// import { PublicRoute } from '@/routes'
+import ErrorBoundary from './ErrorBoundary'
 
 const Layout = lazy(() => import('@/components/Layout').then(module => ({ default: module.Layout })))
 const PublicRoute = lazy(() => import('@/routes').then(module => ({ default: module.PublicRoute })))

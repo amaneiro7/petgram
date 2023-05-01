@@ -1,12 +1,13 @@
-import React, { useContext } from 'react'
+import React, { lazy, useContext } from 'react'
 import { AppContext } from '@/context'
-import { SubmitButton } from '../components/SubmitButton'
+
+const SubmitButton = lazy(() => import('@/components/SubmitButton').then(module => ({ default: module.SubmitButton })))
 
 export const User = () => {
   const { removeAuth } = useContext(AppContext)
   return (
     <>
-      <div>User</div>
+      <h2>User</h2>
       <SubmitButton onClick={removeAuth}>Cerrar sesión</SubmitButton>
     </>
   )

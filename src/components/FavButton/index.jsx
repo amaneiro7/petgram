@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
 import React, { lazy } from 'react'
+import PropTypes from 'prop-types'
 
 const MdFavorite = lazy(() => import('react-icons/md').then(module => ({ default: module.MdFavorite })))
 const MdFavoriteBorder = lazy(() => import('react-icons/md').then(module => ({ default: module.MdFavoriteBorder })))
