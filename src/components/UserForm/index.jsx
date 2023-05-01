@@ -12,7 +12,7 @@ export const UserForm = ({ onSubmit, title, error, disabled }) => {
       password: password.value
     })
   }
-  console.log(disabled)
+
   return (
     <>
       <Title>{title}</Title>
