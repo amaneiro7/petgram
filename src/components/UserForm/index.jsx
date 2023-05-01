@@ -1,6 +1,7 @@
 import React from 'react'
 import { useInputValue } from '@/Hooks/useInputValue'
-import { Form, Input, Button, Title, Error } from './style'
+import { Form, Input, Title, Error } from './style'
+import { SubmitButton } from '@/components/SubmitButton'
 
 export const UserForm = ({ onSubmit, title, error, disabled }) => {
   const email = useInputValue('')
@@ -20,7 +21,7 @@ export const UserForm = ({ onSubmit, title, error, disabled }) => {
         {error && <Error>{error}</Error>}
         <Input disabled={disabled} type='email' placeholder='Email' {...email} />
         <Input disabled={disabled} type='password' placeholder='Password' {...password} />
-        <Button disabled={disabled}>{title}</Button>
+        <SubmitButton disabled={disabled}>{title}</SubmitButton>
       </Form>
     </>
   )

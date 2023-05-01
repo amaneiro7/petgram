@@ -16,20 +16,6 @@ export const Input = styled.input`
     }
 `
 
-export const Button = styled.button`
-    display: block;
-    width: 100%;
-    height: 32px;
-    background: #8d00ff;
-    color: #fff;
-    text-align: center;
-    border-radius: 3px;
-    cursor: pointer;
-    &[disabled] {
-        opacity: .3;
-    }
-`
-
 export const Title = styled.h2`
   font-size: 16px;
   font-weight: 500;
