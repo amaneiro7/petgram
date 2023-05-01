@@ -9,6 +9,7 @@ lerna-debug.log*
 
 node_modules
 curso-platzi-react-avanzado
+api
 dist
 dist-ssr
 *.local
