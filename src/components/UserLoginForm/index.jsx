@@ -1,33 +1,22 @@
-import React, { lazy } from 'react'
-import { useInputValue } from '@/Hooks/useInputValue'
+import React, { lazy, useRef } from 'react'
 import PropTypes from 'prop-types'
 
 const UserForm = lazy(() => import('@/components/UserForm').then(module => ({ default: module.UserForm })))
 
 export const UserLoginForm = ({ onSubmit, title, error, disabled }) => {
-  const email = useInputValue('')
-  const password = useInputValue('')
+  const emailRef = useRef('')
+  const passwordRef = useRef('')
   const handleSubmit = (event) => {
     event.preventDefault()
     onSubmit({
-      email: email.value,
-      password: password.value
+      email: emailRef.current.value,
+      password: passwordRef.current.value
     })
   }
 
   const inputList = [
-    {
-      name: 'email',
-      data: email,
-      type: 'email',
-      placeholder: 'Correo electrónico'
-    },
-    {
-      name: 'password',
-      data: password,
-      type: 'password',
-      placeholder: 'Contraseña'
-    }
+    { name: 'email', ref: emailRef, type: 'email', placeholder: 'Correo electrónico', autoComplete: 'email' },
+    { name: 'password', ref: passwordRef, type: 'password', placeholder: 'Contraseña', autoComplete: 'current-password' }
   ]
 
   return (
@@ -46,8 +35,8 @@ export const UserLoginForm = ({ onSubmit, title, error, disabled }) => {
 }
 
 UserLoginForm.propTypes = {
-  onSubmit: PropTypes.func,
   title: PropTypes.string,
+  onSubmit: PropTypes.func,
   error: PropTypes.string,
   disabled: PropTypes.bool
 }

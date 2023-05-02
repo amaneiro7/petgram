@@ -31,7 +31,7 @@ export const Input = styled.input`
     &[disabled] {
         opacity: .3;
     }
-    &.error, :invalid {
+    &.error {
         background-color: ivory;
         border: none;
         outline: 1px solid red;

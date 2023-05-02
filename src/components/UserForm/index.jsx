@@ -17,18 +17,16 @@ export const UserForm = ({ handleSubmit, title, error, disabled, InputList = [],
     <Wrapper>
       <Section>
         <Title>{title}</Title>
-        <Form onSubmit={handleSubmit}>
+        <Form
+          onSubmit={handleSubmit}
+        >
           {error && <Error>{error}</Error>}
           {InputList.map(element =>
             <Input
               className={error && 'error'}
               key={element.name}
-              autoComplete='off'
               required
-              disabled={disabled}
-              type={element.type}
-              placeholder={element.placeholder}
-              {...element.data}
+              {...element}
             />)}
           <Small>{children}</Small>
           <SubmitButton disabled={disabled}>{buttonActionName}</SubmitButton>

@@ -1,27 +1,26 @@
-import React, { lazy } from 'react'
-import { useInputValue } from '@/Hooks/useInputValue'
+import React, { lazy, useRef } from 'react'
 import PropTypes from 'prop-types'
 
 const UserForm = lazy(() => import('@/components/UserForm').then(module => ({ default: module.UserForm })))
 
 export const UserRegisterForm = ({ onSubmit, title, error, disabled }) => {
-  const email = useInputValue('')
-  const name = useInputValue('')
-  const username = useInputValue('')
-  const password = useInputValue('')
+  const emailRef = useRef('')
+  const name = useRef('')
+  const username = useRef('')
+  const passwordRef = useRef('')
   const handleSubmit = (event) => {
     event.preventDefault()
     onSubmit({
-      email: email.value,
-      password: password.value
+      email: emailRef.current.value,
+      password: passwordRef.current.value
     })
   }
 
   const inputList = [
-    { name: 'email', data: email, type: 'email', placeholder: 'Correo electrónico' },
-    { name: 'username', data: username, type: 'text', placeholder: 'Nombre de usuario' },
-    { name: 'name', data: name, type: 'text', placeholder: 'Nombre completo' },
-    { name: 'password', data: password, type: 'password', placeholder: 'Contraseña' }
+    { name: 'email', ref: emailRef, type: 'email', placeholder: 'Correo electrónico', autoComplete: 'email' },
+    { name: 'username', ref: name, type: 'text', placeholder: 'Nombre de usuario', autoComplete: 'username' },
+    { name: 'name', ref: username, type: 'text', placeholder: 'Nombre completo', autoComplete: 'name' },
+    { name: 'password', ref: passwordRef, type: 'password', placeholder: 'Contraseña', autoComplete: 'new-password' }
   ]
 
   return (
@@ -45,6 +44,7 @@ export const UserRegisterForm = ({ onSubmit, title, error, disabled }) => {
 }
 
 UserRegisterForm.propTypes = {
+  title: PropTypes.string,
   onSubmit: PropTypes.func,
   error: PropTypes.string,
   disabled: PropTypes.bool
