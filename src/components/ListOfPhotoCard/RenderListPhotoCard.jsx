@@ -4,10 +4,11 @@ import PropTypes from 'prop-types'
 const PhotoCard = lazy(() => import('@/components/PhotoCard').then(module => ({ default: module.PhotoCard })))
 
 export const RenderListPhotoCard = ({ loading, data }) => {
+  const loadingArray = [1, 2, 3, 4]
   return (
     <>
       {loading
-        ? [1, 2, 3, 4].map(photo => <PhotoCard key={photo} />)
+        ? loadingArray.map(photo => <PhotoCard key={photo} />)
         : data.photos.map(photo => <PhotoCard key={photo.id} {...photo} />)}
     </>
 

@@ -35,6 +35,10 @@ export const GlobalStyle = createGlobalStyle`
             width: 100%;
     }
 
+    main {
+        padding: 16px;
+    }
+
     #root {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
             overflow-x: hidden;

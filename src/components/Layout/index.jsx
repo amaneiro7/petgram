@@ -1,4 +1,5 @@
-import React, { lazy } from 'react'
+import React, { lazy, useContext } from 'react'
+import { AppContext } from '@/context'
 import { Helmet } from 'react-helmet'
 import PropTypes from 'prop-types'
 
@@ -10,6 +11,7 @@ const Subtitle = lazy(() => import('./style').then(module => ({ default: module.
 const Title = lazy(() => import('./style').then(module => ({ default: module.Title })))
 
 export const Layout = ({ children, title, subtitle }) => {
+  const { isAuth } = useContext(AppContext)
   return (
     <Main>
       <Helmet>
@@ -23,7 +25,7 @@ export const Layout = ({ children, title, subtitle }) => {
         {subtitle && <Subtitle>{subtitle}</Subtitle>}
       </div>
       {children}
-      <Navbar />
+      {isAuth && <Navbar />}
     </Main>
   )
 }

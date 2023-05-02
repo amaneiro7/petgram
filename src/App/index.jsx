@@ -9,7 +9,7 @@ function App () {
   return (
     <ErrorBoundary>
       <BrowserRouter>
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense>
           <Layout>
             <PublicRoute />
           </Layout>

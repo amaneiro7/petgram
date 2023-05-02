@@ -1,6 +1,7 @@
 import React, { lazy } from 'react'
 import { useInputValue } from '@/Hooks/useInputValue'
 import PropTypes from 'prop-types'
+import { Section, Link, P, Wrapper } from './style'
 
 const SubmitButton = lazy(() => import('@/components/SubmitButton').then(module => ({ default: module.SubmitButton })))
 const Form = lazy(() => import('./style').then(module => ({ default: module.Form })))
@@ -8,7 +9,7 @@ const Input = lazy(() => import('./style').then(module => ({ default: module.Inp
 const Title = lazy(() => import('./style').then(module => ({ default: module.Title })))
 const Error = lazy(() => import('./style').then(module => ({ default: module.Error })))
 
-export const UserForm = ({ onSubmit, title, error, disabled }) => {
+export const UserLoginForm = ({ onSubmit, title, error, disabled }) => {
   const email = useInputValue('')
   const password = useInputValue('')
   const handleSubmit = (event) => {
@@ -20,19 +21,24 @@ export const UserForm = ({ onSubmit, title, error, disabled }) => {
   }
 
   return (
-    <>
-      <Title>{title}</Title>
-      <Form onSubmit={handleSubmit}>
-        {error && <Error>{error}</Error>}
-        <Input disabled={disabled} type='email' placeholder='Email' {...email} />
-        <Input disabled={disabled} type='password' placeholder='Password' {...password} />
-        <SubmitButton disabled={disabled}>{title}</SubmitButton>
-      </Form>
-    </>
+    <Wrapper>
+      <Section>
+        <Title>Iniciar sesión</Title>
+        <Form onSubmit={handleSubmit}>
+          {error && <Error>{error}</Error>}
+          <Input disabled={disabled} type='email' placeholder='Correo electrónico' {...email} />
+          <Input disabled={disabled} type='password' placeholder='Contraseña' {...password} />
+          <SubmitButton disabled={disabled}>{title}</SubmitButton>
+        </Form>
+      </Section>
+      <Section>
+        <P>¿No tienes una cuenta? <Link to='/register'>Regístrate</Link></P>
+      </Section>
+    </Wrapper>
   )
 }
 
-UserForm.propTypes = {
+UserLoginForm.propTypes = {
   onSubmit: PropTypes.func,
   title: PropTypes.string,
   error: PropTypes.string,
