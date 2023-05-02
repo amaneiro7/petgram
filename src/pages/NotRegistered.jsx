@@ -20,7 +20,7 @@ export const NotRegistered = () => {
 
   return (
     <Suspense>
-      <UserRegisterForm onSubmit={onSubmit} error={errorMsg} disabled={loading} />
+      <UserRegisterForm title='Regístrate para ver fotos y videos de animales domésticos' onSubmit={onSubmit} error={errorMsg} disabled={loading} />
     </Suspense>
   )
 }

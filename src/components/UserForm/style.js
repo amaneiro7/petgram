@@ -26,15 +26,22 @@ export const Input = styled.input`
     display: block;
     width: 100%;
     padding: 10px 4px;    
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     border-radius: 3px;
     &[disabled] {
         opacity: .3;
     }
+    &.error, :invalid {
+        background-color: ivory;
+        border: none;
+        outline: 1px solid red;
+        border-radius: 5px;
+    }
 `
 
 export const Title = styled.h2`
-  font-size: 16px;
+  font-size: 20px;
+  text-align: center;
   font-weight: 500;
   padding: 8px 0;
 `
@@ -42,14 +49,22 @@ export const Title = styled.h2`
 export const Error = styled.span`
     color: red;
     font-size: 14px;
+    font-weight: 500;
 `
 
 export const P = styled.p`
     text-align: center;
 `
 
+export const Small = styled.small`
+    text-align: center;
+    font-size: 14px;
+    font-weight: 300;
+    line-break: auto;    
+    
+`
+
 export const Link = styled(LinkRouter)`
     text-decoration: none;
     font-weight: 700;
-
 `
