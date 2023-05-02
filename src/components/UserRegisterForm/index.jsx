@@ -31,7 +31,7 @@ export const UserRegisterForm = ({ onSubmit, title, error, disabled }) => {
       disabled={disabled}
       link='/login'
       linkTitle='Inicia sesión'
-      linkInfo='Tienes una cuenta?'
+      linkInfo='¿Tienes una cuenta?'
       InputList={inputList}
       buttonActionName='Registrarte'
     >
