@@ -1,5 +1,6 @@
 import React, { lazy } from 'react'
 import PropTypes from 'prop-types'
+import { Fieldset } from './style'
 
 const SubmitButton = lazy(() => import('@/components/SubmitButton').then(module => ({ default: module.SubmitButton })))
 const Form = lazy(() => import('./style').then(module => ({ default: module.Form })))
@@ -15,11 +16,14 @@ const Small = lazy(() => import('./style').then(module => ({ default: module.Sma
 export const UserForm = ({ handleSubmit, title, error, disabled, InputList = [], link, linkInfo, linkTitle, children, buttonActionName }) => {
   return (
     <Wrapper>
-      <Section>
-        <Title>{title}</Title>
-        <Form
-          onSubmit={handleSubmit}
-        >
+      {/* <Section> */}
+      <Title>{title}</Title>
+      <Form
+        onSubmit={handleSubmit}
+      >
+        <Fieldset>
+          <legend>{buttonActionName}</legend>
+
           {error && <Error>{error}</Error>}
           {InputList.map(element =>
             <Input
@@ -30,8 +34,9 @@ export const UserForm = ({ handleSubmit, title, error, disabled, InputList = [],
             />)}
           <Small>{children}</Small>
           <SubmitButton disabled={disabled}>{buttonActionName}</SubmitButton>
-        </Form>
-      </Section>
+        </Fieldset>
+      </Form>
+      {/* </Section> */}
       <Section>
         <P>{linkInfo} <Link to={link}>{linkTitle}</Link></P>
       </Section>

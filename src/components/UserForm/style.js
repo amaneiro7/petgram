@@ -13,13 +13,19 @@ export const Wrapper = styled.div`
 export const Section = styled.section`
     padding: 24px;
     border: 1px solid #ccc;    
-`
-
-export const Form = styled.form`
-    padding: 16px 0;
+    border-radius: 5px;
+    `
+export const Fieldset = styled.fieldset`    
+    padding: 24px;
+    border-color:#ccc;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     gap: 12px;
+    `
+
+export const Form = styled.form`
+    padding: 16px 0;
 `
 
 export const Input = styled.input`
